@@ -25,7 +25,14 @@ SECRET_KEY = 'django-insecure-v-8g%qrhmm^^=+dqxra_m8a49185gvd(iw!_rjpj70_335as)j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['bodygraphicskpm.pythonanywhere.com', 'localhost']
+# For production
+ALLOWED_HOSTS = [
+    'bodygraphicskpm.pythonanywhere.com',
+    'localhost',
+    '127.0.0.1'
+]
+
+
 
 
 # Application definition
