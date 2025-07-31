@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<h2 class="text-4xl bebas font-bold text-yellow-400 mb-8 text-center tracking-wide">Trainer Dashboard</h2>
+<div class="flex flex-col gap-8">
+    <div class="bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 p-6 rounded-xl shadow-lg border border-gray-700">
+        <h3 class="text-2xl bebas text-white mb-4 tracking-wide">Your Customers</h3>
+        <table class="min-w-full rounded-lg overflow-hidden">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 text-left text-yellow-200 bebas">Customer</th>
+                    <th class="px-4 py-2 text-left text-yellow-200 bebas">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                <tr class="hover:bg-gray-700 transition">
+                    <td class="px-4 py-2 text-white font-semibold bebas text-lg">{{ customer.user.username }}</td>
+                    <td class="px-4 py-2">
+                        <a href="{% url 'assign_diet_plan' customer.user.id %}"
+                           class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 bebas font-bold py-1 px-4 rounded-lg shadow transition">
+                            Assign / Edit Diet Plan
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2" class="text-gray-400 px-4 py-4 text-center bebas">No customers assigned yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

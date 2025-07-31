@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+{% block content %}
+<div class="flex flex-col items-center justify-center min-h-[300px]">
+    <h2 class="text-4xl bebas font-bold text-yellow-400 mb-8 text-center">Welcome to GymDiet!</h2>
+    <p class="text-white text-lg mb-6 bebas tracking-widest">Track your nutrition. Achieve your goals.</p>
+    <div class="flex gap-4">
+        <a href="{% url 'signup' %}" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 bebas text-lg px-6 py-3 rounded-lg shadow transition">Sign Up</a>
+        <a href="{% url 'login' %}" class="bg-white hover:bg-yellow-200 text-gray-900 bebas text-lg px-6 py-3 rounded-lg shadow transition">Log In</a>
+    </div>
+</div>
+{% endblock %}

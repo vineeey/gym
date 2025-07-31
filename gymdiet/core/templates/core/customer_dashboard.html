@@ -1,0 +1,41 @@
+{% extends "core/base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<h2 class="text-3xl bebas font-bold text-yellow-400 mb-8 text-center">Your Diet Plans</h2>
+{% if diet_plans %}
+    <div class="space-y-6">
+    {% for plan in diet_plans %}
+        <div class="bg-gray-800 border-l-8 border-yellow-500 text-white rounded-xl p-6 mb-2 shadow-lg">
+            <div class="flex flex-wrap gap-6 justify-between items-center mb-4">
+                <div>
+                    <span class="bebas text-lg text-yellow-300">Date:</span>
+                    <span class="font-mono text-white">{{ plan.date }}</span>
+                </div>
+                <div class="text-gray-400 text-sm bebas">
+                    Assigned by:
+                    {% if plan.trainer %}
+                        {{ plan.trainer.username }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </div>
+            </div>
+            <div class="mb-2">
+                <span class="bebas text-yellow-300">Meals:</span>
+                <div class="pl-2">{{ plan.meals|linebreaks }}</div>
+            </div>
+            <div class="mb-2">
+                <span class="bebas text-yellow-300">Calories:</span>
+                <span class="font-mono">{{ plan.calories }}</span>
+            </div>
+            <div>
+                <span class="bebas text-yellow-300">Notes:</span>
+                <div class="pl-2">{{ plan.details|linebreaks }}</div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% else %}
+    <p class="text-gray-300 bebas text-center text-lg mt-10">No diet plan assigned yet.<br>Please contact your trainer.</p>
+{% endif %}
+{% endblock %}
